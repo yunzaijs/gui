@@ -1,0 +1,39 @@
+{
+  "name": "yunzai-gui",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "check-format": "git diff --exit-code"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "preline": "^2.4.1",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "files": [
+    ".next",
+    "yunzai-gui.js"
+  ],
+  "main": "./yunzai-gui.js",
+  "bin": {
+    "yunzai-gui": "./yunzai-gui.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "husky": "^9.0.11",
+    "prettier": "^3.0.3",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  }
+}
