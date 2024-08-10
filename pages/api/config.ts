@@ -11,6 +11,6 @@ const LOG = () => {
 }
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
-  res.status(200).json({ foo: 'hello word' })
+  res.status(200).json({ msg: 'hello word' })
   LOG()
 }

@@ -10,10 +10,12 @@
     "check-format": "git diff --exit-code"
   },
   "dependencies": {
+    "axios": "^1.7.3",
+    "immer": "^10.1.1",
     "next": "14.2.5",
-    "preline": "^2.4.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "use-immer": "^0.10.0"
   },
   "files": [
     ".next",
@@ -25,11 +27,12 @@
   },
   "devDependencies": {
     "@types/node": "^20",
-    "husky": "^9.0.11",
-    "prettier": "^3.0.3",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "husky": "^9.0.11",
     "postcss": "^8",
+    "preline": "^2.4.1",
+    "prettier": "^3.0.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
