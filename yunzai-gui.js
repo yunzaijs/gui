@@ -6,20 +6,16 @@ const fs = require('fs')
 
 const command = process.argv[2] || 'start';
 
-//
+// 得到当前位置
 const projectDir = path.resolve(__dirname);
-
+// 当前执行的目录
 const cwd = process.cwd()
 
-//
-console.log("cwd", cwd)
+console.log("Yunzai GUI Project", projectDir)
+console.log("Yunzai GUI CWD", cwd)
 
-const dir = path.join(cwd, 'yunzai.config.js')
-
-if (fs.existsSync(dir)) {
-    console.log("config", fs.readFileSync(dir, 'utf-8'))
-}
-
-console.log("projectDir", projectDir)
-
-execSync(`cd ${projectDir} &&  npx next ${command}`, { stdio: 'inherit' });
+execSync(`cd ${projectDir} &&  npx next ${command}`, {
+    stdio: 'inherit',
+    // 修改 cwd 位置
+    cwd: cwd
+});

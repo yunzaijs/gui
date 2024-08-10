@@ -377,10 +377,10 @@ export default () => {
           <div className="max-w-[85rem] px-4 pt-10 sm:px-6 lg:px-8 lg:pt-14 mx-auto">
             <div className="max-w-2xl mx-auto text-center mb-10">
               <h2 className="text-3xl leading-tight font-bold md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-700 text-transparent">
-                Yunzai Admin
+                Yunzai GUI
               </h2>
               <p className="mt-2 lg:text-lg text-gray-800 dark:text-neutral-200">
-                欢迎使用Yunzai管理系统
+                欢迎使用Yunzai可视化界面
               </p>
             </div>
           </div>
