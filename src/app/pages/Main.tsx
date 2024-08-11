@@ -1,5 +1,24 @@
-import Form from './From'
+'use client'
+import Form from '@/app/pages/From'
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { isLogin } from '@/app/core/login';
 export default () => {
+  const router = useRouter();
+
+  const [show, setShow] = useState(false)
+  useEffect(() => {
+    isLogin((err) => {
+      if (!err) {
+        setShow(true)
+      }
+    })
+  }, [])
+
+  const onClick = () => {
+    router.push('/user')
+  }
+
   return (
     <main id="content">
       <div className="overflow-hidden">
@@ -184,10 +203,44 @@ export default () => {
 
 
         <div className='w-[23rem] sm:w-[30rem] md:w-[40rem] ] m-auto'>
-          <Form />
+
+          {show ? <div className="mt-7 min-h-[50vh]">
+            <div className="p-4 sm:p-7 h-full">
+              <div className="text-center">
+                <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">欢迎使用Yunzai可视化界面</h1>
+                <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
+                  忘记账号?{' '}
+                  <a className="text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500" href="https://github.com/yunzai-org/yunzai-gui">
+                    学习如何配置
+                  </a>
+                </p>
+              </div>
+
+              <div className="mt-5 flex flex-col justify-center h-full">
+                <button
+                  type="button"
+                  className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
+                >
+
+                  使用QQ授权登录
+                </button>
+
+                <div className="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-200 before:me-6 after:flex-1 after:border-t after:border-gray-200 after:ms-6 dark:text-neutral-500 dark:before:border-neutral-600 dark:after:border-neutral-600">
+                  Or
+                </div>
+
+                <button
+                  onClick={onClick}
+                  className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+                >
+                  登录
+                </button>
+                {/* End Form */}
+              </div>
+            </div>
+          </div> : <Form />}
+
         </div>
-
-
       </div>
     </main>
   )

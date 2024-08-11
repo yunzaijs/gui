@@ -3,10 +3,12 @@
 import axios from 'axios';
 import React, { ChangeEvent, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/navigation';
 import { useImmer } from 'use-immer';
 
 export default () => {
     const dispatch = useDispatch();
+    const router = useRouter();
     const [from, setFrom] = useImmer({ username: '', password: '', remember: false });
 
     /**
@@ -38,7 +40,21 @@ export default () => {
                 username: from.username,
                 password: from.password
             }
-        }).then(res => {
+        }).then(res => res.data).then(res => {
+
+            console.log("res", res)
+
+            if (!res?.data?.token) {
+                dispatch({
+                    // aler
+                    type: 'ALERT',
+                    show: true,
+                    typing: 'error',
+                    title: '系统消息',
+                    message: '账户或密码错误',
+                });
+                return
+            }
 
             dispatch({
                 // aler
@@ -49,6 +65,13 @@ export default () => {
                 message: '校验成功，正在载入...',
             });
 
+            localStorage.setItem("yunzai:token", res.data.token)
+
+            //
+
+            setTimeout(() => {
+                router.push('/user')
+            }, 3000)
 
         }).catch(err => {
 

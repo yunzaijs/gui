@@ -1,10 +1,13 @@
 import { existsSync, readFileSync } from 'fs';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { join } from 'path';
+import jwt from 'jsonwebtoken';
 //
 const cwd = process.cwd()
 //
 const dir = join(cwd, 'yunzai-gui.json')
+
+const secret_key = 'yunzai:secret:key'
 
 const UserName = 12345678
 const PassWord = 12345678
@@ -27,12 +30,20 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     //
     if (!existsSync(dir)) {
         if (data?.username == UserName && data?.password == PassWord) {
+
+            const users = {
+                name: '超级管理员',
+                username: data?.username,
+            }
+
+            // 创建 token
+            const token = jwt.sign(users, secret_key, { expiresIn: '24h' });
+
+            //
             res.status(200).json({
                 "msg": "校验成功",
                 "data": {
-                    name: '超级管理员',
-                    username: data?.username,
-                    password: data?.password
+                    token
                 }
             });
         } else {
@@ -64,13 +75,21 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
                 return
             }
 
+            const users = {
+                name: '超级管理员',
+                username: data?.username,
+            }
+
+            const key = JOSNData?.server?.secret_key
+
+            // 创建 token
+            const token = jwt.sign(users, key ?? secret_key, { expiresIn: '24h' });
+
             //
             res.status(200).json({
                 "msg": "校验成功",
                 "data": {
-                    name: '超级管理员',
-                    username: data?.username,
-                    password: data?.password
+                    token
                 }
             });
 

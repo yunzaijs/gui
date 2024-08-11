@@ -2,7 +2,7 @@
 
 只需要有Node.js环境即可随时随地可用的Yunzai可视化管理
 
-此仓库正在设计中....
+![主页](./docs/img/gui.home.png)
 
 ## 使用
 
@@ -37,7 +37,9 @@ npx yunzai-gui@latest start -p 9370
   "server": {
     // 可选，固定后续执行指令
     // 当无参运行时，会检查是否存在该配置
-    "exec": "start -p 9370"
+    "exec": "start -p 9370",
+    //
+    "secret_key": "yunzai:secret:key"
   },
   // 管理员用户
   "admins": [
