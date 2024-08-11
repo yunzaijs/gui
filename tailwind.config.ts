@@ -3,8 +3,6 @@ import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     // js
     './node_modules/preline/preline.js'

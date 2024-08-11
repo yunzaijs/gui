@@ -13,6 +13,11 @@
 > 若当前目前没有机器人，会进入安装项目步骤
 
 ```sh
+# 设置镜像（海外环境或已设置可忽略）
+npm config set registry https://registry.npmmirror.com
+```
+
+```sh
 # 默认端口3000
 npx yunzai-gui@latest
 # 自定义端口
@@ -59,7 +64,13 @@ npm install yunzai-gui@latest -g
 yunzai-gui
 ```
 
-## 测试
+```sh
+yarn config set registry https://registry.npmmirror.com
+yarn global add yunzai-gui
+yarn run yunzai-gui
+```
+
+## 开发
 
 ```sh
 git clone --depth=1 https://github.com/yunzai-org/yunzai-gui.git
@@ -72,6 +83,13 @@ cd yunzai-gui
 npm install yarn@1.19.1 -g
 yarn
 yarn dev
+```
+
+> 编译
+
+```sh
+yarn build
+npm link
 ```
 
 > 测试

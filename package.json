@@ -1,31 +1,29 @@
 {
   "name": "yunzai-gui",
-  "version": "0.0.5",
+  "version": "0.0.6",
+  "main": "./yunzai-gui.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "clean": "next clean",
+    "analyze": "next analyze",
+    "export": "next export",
     "format": "prettier --write .",
-    "check-format": "git diff --exit-code"
+    "check-format": "git diff --exit-code",
+    "prepare": "husky"
   },
   "dependencies": {
-    "axios": "^1.7.3",
-    "immer": "^10.1.1",
     "jsonwebtoken": "^9.0.2",
-    "jsrsasign": "^11.1.0",
     "next": "14.2.5",
     "react": "^18",
-    "react-dom": "^18",
-    "react-redux": "^9.1.2",
-    "redux": "^5.0.1",
-    "use-immer": "^0.10.0"
+    "react-dom": "^18"
   },
   "files": [
     ".next",
     "yunzai-gui.js"
   ],
-  "main": "./yunzai-gui.js",
   "bin": {
     "yunzai-gui": "./yunzai-gui.js"
   },
@@ -35,12 +33,18 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "axios": "^1.7.3",
     "husky": "^9.0.11",
+    "immer": "^10.1.1",
+    "jsrsasign": "^11.1.0",
     "postcss": "^8",
     "preline": "^2.4.1",
     "prettier": "^3.0.3",
+    "react-redux": "^9.1.2",
+    "redux": "^5.0.1",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "use-immer": "^0.10.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
