@@ -14,9 +14,9 @@
 
 ```sh
 # 默认端口3000
-npx yunzai-gui
+npx yunzai-gui@latest
 # 自定义端口
-npx yunzai-gui start -p 9370
+npx yunzai-gui@latest start -p 9370
 ```
 
 访问 `http://localhost:3000/`
@@ -47,6 +47,14 @@ npx yunzai-gui start -p 9370
     }
   ]
 }
+```
+
+- 全局
+
+```sh
+npm install yunzai-gui@latest -g
+# 启动
+yunzai-gui
 ```
 
 ## 测试
