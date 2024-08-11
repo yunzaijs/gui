@@ -71,7 +71,7 @@ export default () => {
                         <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">欢迎使用Yunzai可视化界面</h1>
                         <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
                             忘记账号?{' '}
-                            <a className="text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500" href="../examples/html/signin.html">
+                            <a className="text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500" href="https://github.com/yunzai-org/yunzai-gui">
                                 学习如何配置
                             </a>
                         </p>

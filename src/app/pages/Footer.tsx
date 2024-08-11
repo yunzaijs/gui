@@ -201,7 +201,7 @@ export default () => {
             <div className="space-x-4">
               <a
                 className="inline-block text-gray-500 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-500 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
-                href="#"
+                href="https://github.com/yunzai-org"
               >
                 <svg
                   className="shrink-0 size-4"

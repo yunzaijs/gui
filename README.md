@@ -13,7 +13,10 @@
 > 若当前目前没有机器人，会进入安装项目步骤
 
 ```sh
-npx yunzai-gui@latest
+# 默认端口3000
+npx yunzai-gui
+# 自定义端口
+npx yunzai-gui start -p 9370
 ```
 
 访问 `http://localhost:3000/`
@@ -26,8 +29,17 @@ npx yunzai-gui@latest
 
 `yunzai-gui.json`
 
+> 复制时注意删除注释语句
+
 ```json
 {
+  // 服务器配置
+  "server": {
+    // 可选，固定后续执行指令
+    // 当无参运行时，会检查是否存在该配置
+    "exec": "start -p 9370"
+  },
+  // 管理员用户
   "admins": [
     {
       "username": "12345678",
