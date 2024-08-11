@@ -1,78 +1,36 @@
 "use client"
 
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { ChangeEvent, FormEvent } from 'react';
+import { useDispatch } from 'react-redux';
 import { useImmer } from 'use-immer';
 
-const ErrorMessage = () => {
-    return (<div className="bg-red-50 border-s-4 border-red-500 p-4 dark:bg-red-800/30" role="alert" tabIndex="-1" aria-labelledby="hs-bordered-red-style-label">
-        <div className="flex">
-            <div className="shrink-0">
-                {/* Icon */}
-                <span className="inline-flex justify-center items-center h-8 w-8 rounded-full border-4 border-red-100 bg-red-200 text-red-800 dark:border-red-900 dark:bg-red-800 dark:text-red-400">
-                    <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M18 6 6 18"></path>
-                        <path d="m6 6 12 12"></path>
-                    </svg>
-                </span>
-                {/* End Icon */}
-            </div>
-            <div className="ms-3">
-                <h3 id="hs-bordered-red-style-label" className="text-gray-800 font-semibold dark:text-white">
-                    Error!
-                </h3>
-                <p className="text-sm text-gray-700 dark:text-neutral-400">
-                    Your purchase has been declined.
-                </p>
-            </div>
-        </div>
-    </div>)
-}
-
-const AlertComponent = () => {
-    return (
-        <div className="space-y-5 absolute ">
-            <div className="bg-teal-50 border-t-2 border-teal-500 rounded-lg p-4 dark:bg-teal-800/30" role="alert" tabIndex="-1" aria-labelledby="hs-bordered-success-style-label">
-                <div className="flex">
-                    <div className="shrink-0">
-                        {/* Icon */}
-                        <span className="inline-flex justify-center items-center h-8 w-8 rounded-full border-4 border-teal-100 bg-teal-200 text-teal-800 dark:border-teal-900 dark:bg-teal-800 dark:text-teal-400">
-                            <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
-                                <path d="m9 12 2 2 4-4"></path>
-                            </svg>
-                        </span>
-                        {/* End Icon */}
-                    </div>
-                    <div className="ms-3">
-                        <h3 id="hs-bordered-success-style-label" className="text-gray-800 font-semibold dark:text-white">
-                            Successfully updated.
-                        </h3>
-                        <p className="text-sm text-gray-700 dark:text-neutral-400">
-                            You have successfully updated your email preferences.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const SignUp = () => {
-
+export default () => {
+    const dispatch = useDispatch();
     const [from, setFrom] = useImmer({ username: '', password: '', remember: false });
 
-    const [show, setShow] = useState(false)
-
-    const onChange = (ta) => {
-        const { name, value } = ta
+    /**
+     * 
+     * @param e 
+     */
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target as {
+            value: string,
+            name: 'username' | 'password'
+        }
         setFrom((draft) => {
             draft[name] = value
         })
     }
 
-    const onSubmit = (event) => {
+    /**
+     * 
+     * @param event 
+     */
+    const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+
         axios({
             url: '/api/login',
             method: "post",
@@ -81,23 +39,36 @@ const SignUp = () => {
                 password: from.password
             }
         }).then(res => {
-            console.log("res", res)
+
+            dispatch({
+                // aler
+                type: 'ALERT',
+                show: true,
+                typing: 'ok',
+                title: '系统消息',
+                message: '校验成功，正在载入...',
+            });
+
 
         }).catch(err => {
-            console.error(err)
+
+            dispatch({
+                // aler
+                type: 'ALERT',
+                show: true,
+                typing: 'error',
+                title: '系统消息',
+                message: '账户或密码错误',
+            });
+
         })
     }
-
     return (
-
         <>
-            {
-                show && <AlertComponent />
-            }
             <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-neutral-900 dark:border-neutral-700">
                 <div className="p-4 sm:p-7">
                     <div className="text-center">
-                        <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">Sign up</h1>
+                        <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">欢迎使用Yunzai可视化界面</h1>
                         <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
                             忘记账号?{' '}
                             <a className="text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium dark:text-blue-500" href="../examples/html/signin.html">
@@ -120,20 +91,19 @@ const SignUp = () => {
                         </div>
 
                         {/* Form */}
-                        <form onSubmit={onSubmit}>
+                        <form onSubmit={(e) => onSubmit(e)}>
                             <div className="grid gap-y-4">
                                 {/* Form Group */}
                                 <div>
-                                    <label htmlFor="email" className="block text-sm mb-2 dark:text-white">邮箱地址</label>
+                                    <label htmlFor="email" className="block text-sm mb-2 dark:text-white">账户</label>
                                     <div className="relative">
                                         <input
                                             type="text"
                                             id="username"
                                             name="username"
-                                            onChange={(e) => onChange(e.target)}
-                                            className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                                            onChange={(e) => onChange(e)}
+                                            className=" border py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                                             required
-                                            aria-describedby="email-error"
                                         />
                                         <div className="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                                             <svg className="size-5 text-red-500" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
@@ -141,7 +111,6 @@ const SignUp = () => {
                                             </svg>
                                         </div>
                                     </div>
-                                    <p className="hidden text-xs text-red-600 mt-2" id="email-error">请输入正确的邮箱地址</p>
                                 </div>
                                 {/* End Form Group */}
 
@@ -153,8 +122,8 @@ const SignUp = () => {
                                             type="password"
                                             id="password"
                                             name="password"
-                                            onChange={(e) => onChange(e.target)}
-                                            className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                                            onChange={(e) => onChange(e)}
+                                            className="border py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                                             required
                                             aria-describedby="password-error"
                                         />
@@ -204,5 +173,3 @@ const SignUp = () => {
         </>
     );
 };
-
-export default SignUp;

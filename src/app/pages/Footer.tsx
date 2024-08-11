@@ -44,7 +44,7 @@ export default () => {
                     />
                   </g>
                 </svg>
-                English (US)
+                中文 (简体)
                 <svg
                   className="hs-dropdown-open:rotate-180 shrink-0 size-4 text-gray-500 dark:text-neutral-500"
                   xmlns="http://www.w3.org/2000/svg"
@@ -104,56 +104,9 @@ export default () => {
                   </svg>
                   English (US)
                 </a>
-                <a
-                  className="flex items-center gap-x-2 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                  href="#"
-                >
-                  <svg
-                    className="size-3 rounded-full"
-                    xmlns="http://www.w3.org/2000/svg"
-                    id="flag-icon-css-de"
-                    viewBox="0 0 512 512"
-                  >
-                    <path fill="#ffce00" d="M0 341.3h512V512H0z" />
-                    <path d="M0 0h512v170.7H0z" />
-                    <path fill="#d00" d="M0 170.7h512v170.6H0z" />
-                  </svg>
-                  Deutsch
-                </a>
-                <a
-                  className="flex items-center gap-x-2 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                  href="#"
-                >
-                  <svg
-                    className="size-3 rounded-full"
-                    xmlns="http://www.w3.org/2000/svg"
-                    id="flag-icon-css-dk"
-                    viewBox="0 0 512 512"
-                  >
-                    <path fill="#c8102e" d="M0 0h512.1v512H0z" />
-                    <path fill="#fff" d="M144 0h73.1v512H144z" />
-                    <path fill="#fff" d="M0 219.4h512.1v73.2H0z" />
-                  </svg>
-                  Dansk
-                </a>
-                <a
-                  className="flex items-center gap-x-2 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                  href="#"
-                >
-                  <svg
-                    className="size-3 rounded-full"
-                    xmlns="http://www.w3.org/2000/svg"
-                    id="flag-icon-css-it"
-                    viewBox="0 0 512 512"
-                  >
-                    <g fillRule="evenodd" strokeWidth="1pt">
-                      <path fill="#fff" d="M0 0h512v512H0z" />
-                      <path fill="#009246" d="M0 0h170.7v512H0z" />
-                      <path fill="#ce2b37" d="M341.3 0H512v512H341.3z" />
-                    </g>
-                  </svg>
-                  Italiano
-                </a>
+
+
+
                 <a
                   className="flex items-center gap-x-2 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
                   href="#"
@@ -212,15 +165,21 @@ export default () => {
             <div className="space-x-4 text-sm">
               <a
                 className="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
-                href="#"
+                href="https://github.com/yunzai-org"
               >
-                团队
+                Team
               </a>
               <a
                 className="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
-                href="#"
+                href="https://github.com/icqqjs/icqq"
               >
-                状态
+                ICQQ
+              </a>
+              <a
+                className="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
+                href="https://qm.qq.com/cgi-bin/qm/qr?authKey=4HjybQtc5O6cqPtpkFTNKe1KsV7MQ4ulUPq1IV9T6pPczSn3oTavY9TW3PVCW3Az&k=9xNiPc3vdKodzUtWeqaT_zOrOpzAlWEh&noverify=0"
+              >
+                QQ-Group
               </a>
             </div>
           </div>

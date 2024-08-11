@@ -18,6 +18,25 @@ npx yunzai-gui@latest
 
 访问 `http://localhost:3000/`
 
+账户 `12345678`
+
+密码 `12345678`
+
+- 修改
+
+`yunzai-gui.json`
+
+```json
+{
+  "admins": [
+    {
+      "username": "12345678",
+      "password": "12345678"
+    }
+  ]
+}
+```
+
 ## 测试
 
 ```sh
