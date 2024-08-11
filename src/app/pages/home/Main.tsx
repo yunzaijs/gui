@@ -1,5 +1,5 @@
 'use client'
-import Form from '@/app/pages/From'
+import Form from '@/app/pages/home/From'
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { isLogin } from '@/app/core/login';

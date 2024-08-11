@@ -1,6 +1,6 @@
 ## Yunzai GUI
 
-只需要有Node.js环境即可随时随地可用的Yunzai可视化管理
+只需要有Node.js环境即可随时启动的Yunzai可视化管理
 
 ![主页](./docs/img/gui.home.png)
 
@@ -38,7 +38,7 @@ npx yunzai-gui@latest start -p 9370
     // 可选，固定后续执行指令
     // 当无参运行时，会检查是否存在该配置
     "exec": "start -p 9370",
-    //
+    // token 密钥
     "secret_key": "yunzai:secret:key"
   },
   // 管理员用户

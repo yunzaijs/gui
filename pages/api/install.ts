@@ -1,9 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-/**
- * *******
- * 请求登录
- * *******
- */
 export default (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method !== 'POST') {
         res.setHeader('Allow', ['POST']);
@@ -13,11 +8,6 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const data = req.body;
-
-    /**
-     * HTTPS: git clone --depth=1 https://github.com/yunzai-org/yunzaijs.git
-     * CURL: curl -L -o yunzaijs.zip https://github.com/yunzai-org/yunzaijs/archive/refs/heads/main.zip
-     */
 
     if (data.typing == 'HTTPS') {
         //

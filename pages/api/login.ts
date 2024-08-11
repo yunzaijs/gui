@@ -1,22 +1,6 @@
-import { existsSync, readFileSync } from 'fs';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { join } from 'path';
 import jwt from 'jsonwebtoken';
-//
-const cwd = process.cwd()
-//
-const dir = join(cwd, 'yunzai-gui.json')
-
-const secret_key = 'yunzai:secret:key'
-
-const UserName = 12345678
-const PassWord = 12345678
-
-/**
- * *******
- * 请求登录
- * *******
- */
+import { getConfig, secret_key, UserName, PassWord } from '@/server/idnex';
 export default (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method !== 'POST') {
         res.setHeader('Allow', ['POST']);
@@ -24,11 +8,10 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
         //
         return
     }
-
     const data = req.body;
-
+    const config = getConfig()
     //
-    if (!existsSync(dir)) {
+    if (!config) {
         if (data?.username == UserName && data?.password == PassWord) {
 
             const users = {
@@ -53,8 +36,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
         return
     } else {
         try {
-            const JOSNData = JSON.parse(readFileSync(dir, 'utf-8'))
-            const admins = JOSNData?.admins
+            const admins = config?.admins
 
             //
             if (!admins || !Array.isArray(admins)) {
@@ -80,7 +62,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
                 username: data?.username,
             }
 
-            const key = JOSNData?.server?.secret_key
+            const key = config?.server?.secret_key
 
             // 创建 token
             const token = jwt.sign(users, key ?? secret_key, { expiresIn: '24h' });

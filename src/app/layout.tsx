@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
+
+//
 import './globals.css'
 
 import PrelineScript from './components/PrelineScript'
 
 export const metadata: Metadata = {
-  title: 'Yunzai Admin Web',
-  description: '云崽Next管理'
+  title: 'Yunzai GUI',
+  description: 'Yunzai Next'
 }
 
 export default function RootLayout({
