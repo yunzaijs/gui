@@ -1,6 +1,37 @@
 'use client'
 
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+
+type DataType = {
+  bot_name: string
+  bot_username: string
+  mastear_name: string
+  mastear_username: string
+  status: string
+  time: string
+  create_time: string
+}[]
+
 export default function App() {
+  const [data, setData] = useState<DataType>([])
+
+  useEffect(() => {
+    //
+    axios({
+      method: 'GET',
+      url: '/api/list'
+    })
+      .then(res => res.data)
+      .then(res => {
+        console.log('res', res)
+        setData(res)
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }, [])
+
   return (
     <div className="flex flex-col">
       <div className="-m-1.5 overflow-x-auto">
@@ -9,22 +40,15 @@ export default function App() {
             <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
               <div>
                 <h2 className="text-xl font-semibold text-gray-800 dark:text-neutral-200">
-                  账号管理
+                  机器人管理
                 </h2>
                 <p className="text-sm text-gray-600 dark:text-neutral-400">
-                  添加或修改账号
+                  添加或删除机器人
                 </p>
               </div>
 
               <div>
                 <div className="inline-flex gap-x-2">
-                  <a
-                    className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800"
-                    href="#"
-                  >
-                    所有
-                  </a>
-
                   <a
                     className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
                     href="#"
@@ -41,7 +65,7 @@ export default function App() {
                       <path d="M5 12h14" />
                       <path d="M12 5v14" />
                     </svg>
-                    添加用户
+                    添加机器人
                   </a>
                 </div>
               </div>
@@ -78,7 +102,7 @@ export default function App() {
                   <th scope="col" className="px-6 py-3 text-start">
                     <div className="flex items-center gap-x-2">
                       <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                        Position
+                        主人
                       </span>
                     </div>
                   </th>
@@ -86,7 +110,7 @@ export default function App() {
                   <th scope="col" className="px-6 py-3 text-start">
                     <div className="flex items-center gap-x-2">
                       <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                        Status
+                        状态
                       </span>
                     </div>
                   </th>
@@ -94,7 +118,7 @@ export default function App() {
                   <th scope="col" className="px-6 py-3 text-start">
                     <div className="flex items-center gap-x-2">
                       <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
-                        Portfolio
+                        运行时长
                       </span>
                     </div>
                   </th>
@@ -116,7 +140,7 @@ export default function App() {
               }
 
               <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
-                {[0, 1, 2].map((_, index) => (
+                {data.map((item, index) => (
                   <tr key={index}>
                     <td className="size-px whitespace-nowrap">
                       <div className="ps-6 py-3">
@@ -140,10 +164,10 @@ export default function App() {
                           />
                           <div className="grow">
                             <span className="block text-sm font-semibold text-gray-800 dark:text-neutral-200">
-                              Christina Bersh
+                              {item.bot_name}
                             </span>
                             <span className="block text-sm text-gray-500 dark:text-neutral-500">
-                              christina@site.com
+                              {item.bot_username}
                             </span>
                           </div>
                         </div>
@@ -152,10 +176,10 @@ export default function App() {
                     <td className="h-px w-72 whitespace-nowrap">
                       <div className="px-6 py-3">
                         <span className="block text-sm font-semibold text-gray-800 dark:text-neutral-200">
-                          Director
+                          {item.mastear_name}
                         </span>
                         <span className="block text-sm text-gray-500 dark:text-neutral-500">
-                          Human resources
+                          {item.mastear_username}
                         </span>
                       </div>
                     </td>
@@ -172,42 +196,31 @@ export default function App() {
                           >
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                           </svg>
-                          Active
+                          {item.status == '1' && '运行中'}
                         </span>
                       </div>
                     </td>
                     <td className="size-px whitespace-nowrap">
                       <div className="px-6 py-3">
                         <div className="flex items-center gap-x-3">
-                          <span className="text-xs text-gray-500 dark:text-neutral-500">
-                            1/5
-                          </span>
-                          <div className="flex w-full h-1.5 bg-gray-200 rounded-full overflow-hidden dark:bg-neutral-700">
-                            <div
-                              className="flex flex-col justify-center overflow-hidden bg-gray-800 dark:bg-neutral-200"
-                              role="progressbar"
-                              style={{
-                                width: '25%'
-                              }}
-                            ></div>
-                          </div>
+                          {item.time}
                         </div>
                       </div>
                     </td>
                     <td className="size-px whitespace-nowrap">
                       <div className="px-6 py-3">
                         <span className="text-sm text-gray-500 dark:text-neutral-500">
-                          28 Dec, 12:12
+                          {item.create_time}
                         </span>
                       </div>
                     </td>
                     <td className="size-px whitespace-nowrap">
                       <div className="px-6 py-1.5">
-                        <a
-                          className="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500"
-                          href="#"
-                        >
-                          Edit
+                        <a className="inline-flex mx-1 items-center gap-x-1 text-sm text-red-600 decoration-2 hover:underline font-medium dark:text-blue-500">
+                          停止
+                        </a>
+                        <a className="inline-flex mx-1 items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline font-medium dark:text-blue-500">
+                          编辑
                         </a>
                       </div>
                     </td>
@@ -220,7 +233,7 @@ export default function App() {
               <div>
                 <p className="text-sm text-gray-600 dark:text-neutral-400">
                   <span className="font-semibold text-gray-800 dark:text-neutral-200">
-                    12
+                    {data.length}
                   </span>
                 </p>
               </div>
