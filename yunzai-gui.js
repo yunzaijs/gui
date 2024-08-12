@@ -3,6 +3,7 @@
 const { execSync } = require('child_process')
 const path = require('path')
 const fs = require('fs')
+const next = require.resolve('next/dist/bin/next')
 
 const argv = [...process.argv.splice(2)]
 
@@ -22,7 +23,7 @@ console.log('Yunzai GUI CWD', cwd)
  */
 const init = () => {
   execSync(
-    `cd ${projectDir} && npx next ${argv.length == 0 ? 'start' : argv.join(' ')}`,
+    `node ${next} ${argv.length == 0 ? `start ${projectDir}` : argv.join(' ').replace('start', `start ${projectDir}`)}`,
     {
       // 输出记录
       stdio: 'inherit'
@@ -45,10 +46,13 @@ const cmd = () => {
     init()
     return
   }
-  execSync(`cd ${projectDir} && npx next ${server.exec}`, {
-    // 输出记录
-    stdio: 'inherit'
-  })
+  execSync(
+    `node ${next} ${server.exec.replace('start', `start ${projectDir}`)}`,
+    {
+      // 输出记录
+      stdio: 'inherit'
+    }
+  )
 }
 
 // 存在 配置  且 无参启动

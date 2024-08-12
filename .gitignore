@@ -35,8 +35,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-yunzai-gui.json
-
 yarn.lock
 
 config
+.next/*
+
+yunzai-gui.json
+yunzai-gui-*

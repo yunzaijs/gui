@@ -1,3 +1,12 @@
-.next/cache/**/*
-.next/types/**/*
-*nft.json
+# 忽略所有文件
+/*   
+# 不忽略next
+!/.next
+# 但是忽略 cache types
+.next/cache
+.next/types
+# .next/**/*.nft.json
+# 不忽略执行文件
+!/yunzai-gui.js
+!/README.md
+!/package.json

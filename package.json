@@ -1,6 +1,6 @@
 {
   "name": "yunzai-gui",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "main": "./yunzai-gui.js",
   "scripts": {
     "dev": "next dev",
@@ -20,10 +20,6 @@
     "react": "^18",
     "react-dom": "^18"
   },
-  "files": [
-    ".next",
-    "yunzai-gui.js"
-  ],
   "bin": {
     "yunzai-gui": "./yunzai-gui.js"
   },
