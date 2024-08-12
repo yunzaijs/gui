@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
 import { dirname, join } from 'path'
-const cwd = process.cwd()
+const cwd = process.env.YUNZAI_GUI_CWD ?? process.cwd()
 const dir = join(cwd, 'yunzai-gui.json')
 export const secret_key = 'yunzai:secret:key'
 export const UserName = 12345678

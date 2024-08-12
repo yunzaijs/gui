@@ -25,12 +25,14 @@ const init = () => {
     `cd ${projectDir} && npx next ${argv.length == 0 ? 'start' : argv.join(' ')}`,
     {
       // 输出记录
-      stdio: 'inherit',
-      // 修改 cwd 位置
-      cwd: cwd
+      stdio: 'inherit'
     }
   )
 }
+
+// 记录地址
+process.env.YUNZAI_GUI_DIR = projectDir
+process.env.YUNZAI_GUI_CWD = cwd
 
 /**
  *
@@ -45,9 +47,7 @@ const cmd = () => {
   }
   execSync(`cd ${projectDir} && npx next ${server.exec}`, {
     // 输出记录
-    stdio: 'inherit',
-    // 修改 cwd 位置
-    cwd: cwd
+    stdio: 'inherit'
   })
 }
 
