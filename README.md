@@ -1,8 +1,5 @@
 ## Yunzai GUI
 
-![主页](./docs/img/gui.home.png)
-![面板](./docs/img/gui.user.png)
-
 ## 使用
 
 - 启动

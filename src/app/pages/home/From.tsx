@@ -74,7 +74,7 @@ export default () => {
         //
 
         setTimeout(() => {
-          router.push('/user')
+          router.push('/admin')
         }, 3000)
       })
       .catch(err => {

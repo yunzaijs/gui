@@ -71,10 +71,10 @@ export default function App() {
             <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
               <div>
                 <h2 className="text-xl font-semibold text-gray-800 dark:text-neutral-200">
-                  机器人管理
+                  账号
                 </h2>
                 <p className="text-sm text-gray-600 dark:text-neutral-400">
-                  添加或删除机器人
+                  添加或删除账号
                 </p>
               </div>
 
@@ -96,7 +96,7 @@ export default function App() {
                       <path d="M5 12h14" />
                       <path d="M12 5v14" />
                     </svg>
-                    添加机器人
+                    添加账号
                   </button>
                 </div>
               </div>

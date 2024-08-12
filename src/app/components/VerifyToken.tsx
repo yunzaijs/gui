@@ -3,6 +3,8 @@
 import { ReactNode, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { isLogin } from '@/app/core/login'
+import '@/app/components/App.css'
+import PrelineScript from '@/app/components/PrelineScript'
 export default ({ children }: { children: ReactNode }) => {
   const router = useRouter()
   useEffect(() => {
@@ -10,5 +12,10 @@ export default ({ children }: { children: ReactNode }) => {
       if (err) router.push('/')
     })
   }, [])
-  return <>{children}</>
+  return (
+    <>
+      {children}
+      <PrelineScript />
+    </>
+  )
 }

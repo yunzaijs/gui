@@ -16,7 +16,7 @@ export default () => {
   }, [])
 
   const onClick = () => {
-    router.push('/user')
+    router.push('/admin')
   }
 
   return (

@@ -1,7 +1,7 @@
-'use client'
+'use clien'
 
 import VerifyToken from '@/app/components/VerifyToken'
-import UserApp from '@/app/pages/user/App'
+import UserApp from '@/app/pages/admin/App'
 export default () => {
   return (
     <VerifyToken>

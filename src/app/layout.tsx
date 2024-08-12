@@ -1,15 +1,17 @@
 import type { Metadata } from 'next'
-
-//
-import './globals.css'
-
-import PrelineScript from './components/PrelineScript'
+import PrelineScript from '@/app/components/PrelineScript'
+import '@/app/components/app.css'
 
 export const metadata: Metadata = {
   title: 'Yunzai GUI',
   description: 'Yunzai Next'
 }
 
+/**
+ *
+ * @param param0
+ * @returns
+ */
 export default function RootLayout({
   children
 }: Readonly<{
