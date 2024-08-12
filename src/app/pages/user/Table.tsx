@@ -2,6 +2,7 @@
 
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import From from './From'
 
 type DataType = {
   bot_name: string
@@ -16,25 +17,55 @@ type DataType = {
 export default function App() {
   const [data, setData] = useState<DataType>([])
 
+  const [show, setShow] = useState(false)
+
   useEffect(() => {
     //
     axios({
       method: 'GET',
-      url: '/api/list'
+      url: '/api/bot/list'
     })
       .then(res => res.data)
       .then(res => {
         console.log('res', res)
-        setData(res)
+        if (Array.isArray(res) && res.length > 0) {
+          setData(res)
+        }
       })
       .catch(err => {
         console.error(err)
       })
   }, [])
 
+  /**
+   * 添加账号
+   */
+  const onClickAddBot = () => {
+    //
+  }
+
+  /**
+   * 点击关闭
+   */
+  const onClickClose = () => {
+    setShow(false)
+  }
+
+  /**
+   *
+   */
+  const onClickOpen = () => {
+    setShow(true)
+  }
+
   return (
-    <div className="flex flex-col">
-      <div className="-m-1.5 overflow-x-auto">
+    <section className="flex flex-col relative">
+      {show && (
+        <section className=" absolute flex justify-center w-full ">
+          <From onClickClose={onClickClose}></From>
+        </section>
+      )}
+      <section className="-m-1.5 overflow-x-auto">
         <div className="p-1.5 min-w-full inline-block align-middle">
           <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-neutral-800 dark:border-neutral-700">
             <div className="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
@@ -49,9 +80,9 @@ export default function App() {
 
               <div>
                 <div className="inline-flex gap-x-2">
-                  <a
+                  <button
+                    onClick={onClickOpen}
                     className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-                    href="#"
                   >
                     <svg
                       className="flex-shrink-0 size-4"
@@ -66,7 +97,7 @@ export default function App() {
                       <path d="M12 5v14" />
                     </svg>
                     添加机器人
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -280,7 +311,7 @@ export default function App() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </section>
   )
 }

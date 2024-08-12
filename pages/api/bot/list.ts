@@ -1,3 +1,4 @@
+import { getGuiConfig } from '@/server/idnex'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 const Data = [
@@ -18,5 +19,6 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     res.status(405).end(`Method ${req.method} Not Allowed`)
     return
   }
+  const Data = getGuiConfig('bot')
   res.status(200).json(Data)
 }

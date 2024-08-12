@@ -1,5 +1,5 @@
-import { existsSync, readFileSync } from 'fs'
-import { join } from 'path'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
+import { dirname, join } from 'path'
 const cwd = process.cwd()
 const dir = join(cwd, 'yunzai-gui.json')
 export const secret_key = 'yunzai:secret:key'
@@ -15,5 +15,20 @@ export const CURL_SHELL =
  */
 export const getConfig = () => {
   if (!existsSync(dir)) return null
+  return JSON.parse(readFileSync(dir, 'utf-8'))
+}
+
+/**
+ *
+ * @param name
+ * @returns
+ */
+export const getGuiConfig = (name: 'bot' = 'bot') => {
+  const dir = join(cwd, `config/gui/${name}.json`)
+  if (!existsSync(dir)) {
+    mkdirSync(dirname(dir), { recursive: true })
+    writeFileSync(dir, `[]`)
+    return []
+  }
   return JSON.parse(readFileSync(dir, 'utf-8'))
 }

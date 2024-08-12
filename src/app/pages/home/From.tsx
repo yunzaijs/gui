@@ -37,7 +37,7 @@ export default () => {
     event.preventDefault()
 
     axios({
-      url: '/api/login',
+      url: '/api/user/login',
       method: 'post',
       data: {
         username: from.username,
