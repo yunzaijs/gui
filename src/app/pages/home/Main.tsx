@@ -174,6 +174,32 @@ export default () => {
           </nav>
         </header>
 
+        <div className="relative">
+          <div
+            aria-hidden="true"
+            className="flex -z-[1] absolute -top-48 start-0"
+          >
+            <div className="bg-purple-200 opacity-30 blur-3xl w-[1036px] h-[600px] dark:bg-purple-900 dark:opacity-20"></div>
+            <div className="bg-gray-200 opacity-90 blur-3xl w-[577px] h-[300px] transform translate-y-32 dark:bg-neutral-800/60"></div>
+          </div>
+
+          <div className="max-w-[85rem] px-4 pt-10 sm:px-6 lg:px-8 lg:pt-14 mx-auto">
+            <div className="max-w-2xl mx-auto text-center mb-10">
+              <h2 className="text-3xl leading-tight font-bold md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-700 text-transparent">
+                Yunzai Admin
+              </h2>
+              <p className="mt-2 lg:text-lg text-gray-800 dark:text-neutral-200">
+                欢迎使用Yunzai管理系统
+              </p>
+            </div>
+          </div>
+
+          <div className="absolute top-1/2 start-1/2 -z-[1] transform -translate-y-1/2 -translate-x-1/2 w-[340px] h-[340px] border border-dashed border-violet-200 rounded-full dark:border-violet-900/60"></div>
+          <div className="absolute top-1/2 start-1/2 -z-[1] transform -translate-y-1/2 -translate-x-1/2 w-[575px] h-[575px] border border-dashed border-violet-200 rounded-full opacity-80 dark:border-violet-900/60"></div>
+          <div className="absolute top-1/2 start-1/2 -z-[1] transform -translate-y-1/2 -translate-x-1/2 w-[840px] h-[840px] border border-dashed border-violet-200 rounded-full opacity-60 dark:border-violet-900/60"></div>
+          <div className="absolute top-1/2 start-1/2 -z-[1] transform -translate-y-1/2 -translate-x-1/2 w-[1080px] h-[1080px] border border-dashed border-violet-200 rounded-full opacity-40 dark:border-violet-900/60"></div>
+        </div>
+
         <div className="w-[23rem] sm:w-[30rem] md:w-[40rem] ] m-auto">
           {show ? (
             <div className="mt-7 min-h-[50vh]">
