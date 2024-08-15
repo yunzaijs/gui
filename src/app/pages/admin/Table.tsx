@@ -59,7 +59,7 @@ export default function App() {
   }
 
   return (
-    <section className="flex flex-col relative">
+    <section className="flex flex-col relative w-full">
       {show && (
         <section className=" absolute flex justify-center w-full ">
           <From onClickClose={onClickClose}></From>
