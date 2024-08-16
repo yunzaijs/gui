@@ -1,21 +1,4 @@
-import { HTTPS_GIT_URL } from '@/server/idnex'
-import { spawn } from 'child_process'
-
-/**
- *
- * @param ws
- */
-const gitClone = (ws: import('ws').WebSocket) => {
-  const gitClone = spawn('git', [
-    'clone',
-    '--depth=1',
-    HTTPS_GIT_URL,
-    'yunzai-next'
-  ])
-  gitClone.stdout.on('data', data => {})
-  gitClone.stderr.on('data', data => {})
-  gitClone.on('close', code => {})
-}
+import { openEvent } from '@/server/events'
 
 const WSEvent = {
   // 对方主动关闭
@@ -24,12 +7,10 @@ const WSEvent = {
   },
   // 消息互传测试
   '1': (ws: import('ws').WebSocket, d: any) => {
-    //
+    console.log('收到连接')
   },
   // 执行事件
-  '2': (ws: import('ws').WebSocket, d: any) => {
-    // gitClone
-  },
+  '2': openEvent,
   // 错误传输
   '9': (ws: import('ws').WebSocket, d: any) => {
     //
@@ -40,46 +21,36 @@ const WSEvent = {
   }
 }
 
-const openEvent = (
-  ws: import('ws').WebSocket,
-  d: {
-    typing: 'get-bot'
-    message: string
-    data: any
-  }
-) => {
-  // ws
-  if (d.typing == 'get-bot') {
-    const data = {
-      t: '2',
-      d: {
-        typing: 'post-bot',
-        cwd: process.env.YUNZAI_GUI_CWD,
-        status: '1',
-        adress: '地区'
-      }
-    }
-    ws.send(JSON.stringify(data))
-    return
-  }
-}
-
 export function SOCKET(
-  client: import('ws').WebSocket,
+  ws: import('ws').WebSocket,
   request: import('http').IncomingMessage,
   server: import('ws').WebSocketServer
 ) {
-  client.on('message', message => {
+  console.log('websoket 开启')
+  //
+  ws.on('message', message => {
     try {
-      const data = JSON.parse(message.toString())
-      if (data.t == '2') {
-        // 执行消息
-        openEvent(client, data.d)
-      } else {
-        //
+      //
+      const data = JSON.parse(message.toString()) as {
+        t: '0' | '1' | '2' | '9' | '12'
+        d: any
       }
-    } catch {
-      client.send(
+      // //
+      if (WSEvent[data.t] && typeof WSEvent[data.t] == 'function') {
+        WSEvent[data.t](ws, data.d)
+      } else {
+        ws.send(
+          JSON.stringify({
+            t: '9',
+            d: {
+              message: '错误传输'
+            }
+          })
+        )
+      }
+    } catch (err) {
+      console.error(err)
+      ws.send(
         JSON.stringify({
           t: '9',
           d: {
@@ -89,7 +60,14 @@ export function SOCKET(
       )
     }
   })
-  client.on('close', () => {
+
+  ws.on('close', err => {
     console.log('websoket 关闭')
   })
+
+  ws.on('error', err => {
+    console.error('出错啦', err)
+  })
+
+  //
 }

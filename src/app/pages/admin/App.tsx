@@ -15,7 +15,6 @@ export default () => {
       <Header></Header>
       <Breadcrumb></Breadcrumb>
       <Sidebar onClickMenu={val => setSelect(val)}></Sidebar>
-
       <main className="w-full lg:ps-64">
         <div className="flex p-4 sm:p-6 space-y-4 sm:space-y-6">
           {select == 'user.manage' && <Table />}

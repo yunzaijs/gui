@@ -34,15 +34,14 @@ git --version
 > 若当前目前没有机器人，会进入安装项目步骤
 
 ```sh
-# 生产 npm 配置（海外环境可忽略）
-echo "registry=https://registry.npmmirror.com" >> .npmrc
-```
-
-```sh
-# 默认端口3000
+# 并设定镜像地址
 npx yunzai-gui@latest
+# 设定镜像地址
+npx --registry=https://registry.npmmirror.com yunzai-gui@latest
 # 自定义端口
-npx yunzai-gui@latest start -p 9370
+npx  yunzai-gui@latest start -p 9370
+# 设定镜像并自定义
+npx --registry=https://registry.npmmirror.com yunzai-gui@latest -p 9370
 ```
 
 访问 `http://localhost:3000/`

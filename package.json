@@ -1,6 +1,6 @@
 {
   "name": "yunzai-gui",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "main": "./yunzai-gui.js",
   "scripts": {
     "dev": "next dev",
