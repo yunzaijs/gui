@@ -23,7 +23,7 @@ export default function App() {
     //
     axios({
       method: 'GET',
-      url: '/api/bot/list'
+      url: '/api/account/list'
     })
       .then(res => res.data)
       .then(res => {
