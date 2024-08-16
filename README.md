@@ -1,5 +1,30 @@
 ## Yunzai GUI
 
+## 环境
+
+- Centos 8
+
+> 8 以下请使用setup_16.x
+
+```sh
+curl -sL https://rpm.nodesource.com/setup_18.x | sudo bash -
+sudo yum install nodejs -y
+node -v
+```
+
+```sh
+yum install git -y
+git --version
+```
+
+- Window11
+
+[点击安装 Node.js](https://nodejs.org)
+
+> 推进全选 `下一步`
+
+[点击安装 Git](https://nodejs.org)
+
 ## 使用
 
 - 启动
@@ -9,8 +34,8 @@
 > 若当前目前没有机器人，会进入安装项目步骤
 
 ```sh
-# 设置镜像（海外环境或已设置可忽略）
-npm config set registry https://registry.npmmirror.com
+# 生产 npm 配置（海外环境可忽略）
+echo "registry=https://registry.npmmirror.com" >> .npmrc
 ```
 
 ```sh
@@ -50,20 +75,6 @@ npx yunzai-gui@latest start -p 9370
     }
   ]
 }
-```
-
-- 全局
-
-```sh
-npm install yunzai-gui@latest -g
-# 启动
-yunzai-gui
-```
-
-```sh
-yarn config set registry https://registry.npmmirror.com
-yarn global add yunzai-gui
-yarn run yunzai-gui
 ```
 
 ## 开发
