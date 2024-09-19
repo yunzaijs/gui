@@ -40,9 +40,9 @@ export default () => {
                 </div>
                 <input
                   type="text"
-                  className="py-2 ps-10 pe-16 block w-full bg-white border-gray-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder:text-neutral-400 dark:focus:ring-neutral-600"
+                  className="py-2  border ps-10 pe-16 block w-full bg-white border-gray-200 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder:text-neutral-400 dark:focus:ring-neutral-600"
                   placeholder="Search"
-                ></input>
+                />
                 <div className="hidden absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-1">
                   <button
                     type="button"
@@ -150,27 +150,6 @@ export default () => {
                 <span className="sr-only">Notifications</span>
               </button>
 
-              <button
-                type="button"
-                className="size-[38px] relative inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
-              >
-                <svg
-                  className="shrink-0 size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                </svg>
-                <span className="sr-only">Activity</span>
-              </button>
-
               <div className="hs-dropdown [--placement:bottom-right] relative inline-flex">
                 <button
                   id="hs-dropdown-account"
@@ -195,7 +174,7 @@ export default () => {
                 >
                   <div className="py-3 px-5 bg-gray-100 rounded-t-lg dark:bg-neutral-700">
                     <p className="text-sm text-gray-500 dark:text-neutral-500">
-                      Signed in as
+                      用户名
                     </p>
                     <p className="text-sm font-medium text-gray-800 dark:text-neutral-200">
                       柠檬冲水
@@ -221,51 +200,7 @@ export default () => {
                         <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
                         <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
                       </svg>
-                      Newsletter
-                    </a>
-                    <a
-                      className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                      href="#"
-                    >
-                      <svg
-                        className="shrink-0 size-4"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-                        <path d="M3 6h18" />
-                        <path d="M16 10a4 4 0 0 1-8 0" />
-                      </svg>
-                      Purchases
-                    </a>
-                    <a
-                      className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
-                      href="#"
-                    >
-                      <svg
-                        className="shrink-0 size-4"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
-                        <path d="M12 12v9" />
-                        <path d="m8 17 4 4 4-4" />
-                      </svg>
-                      Downloads
+                      消息
                     </a>
                     <a
                       className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300"
@@ -288,7 +223,7 @@ export default () => {
                         <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
                         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                       </svg>
-                      Team Account
+                      账户
                     </a>
                   </div>
                 </div>

@@ -1,26 +1,50 @@
 import { openEvent } from '@/server/events'
-
-const WSEvent = {
-  // 对方主动关闭
+//
+const TypingEnum = ['0', '1', '2', '9'] as const
+//
+type Typing = (typeof TypingEnum)[number]
+//
+const WSEvent: {
+  [key in Typing]: (ws: import('ws').WebSocket, d: any) => void
+} = {
+  // 客户端主动关闭
   '0': (ws: import('ws').WebSocket, d: any) => {
-    // ws.close()
+    console.log('客户端主动关闭')
   },
-  // 消息互传测试
+  // 连接性测试
   '1': (ws: import('ws').WebSocket, d: any) => {
     console.log('收到连接')
   },
-  // 执行事件
+  // 客户端事件执行请求
   '2': openEvent,
-  // 错误传输
+  // 客户端错误 或 服务器错误
   '9': (ws: import('ws').WebSocket, d: any) => {
-    //
-  },
-  // 服务端主动关闭
-  '12': (ws: import('ws').WebSocket, d: any) => {
-    //
+    console.error('错误传输', d)
   }
 }
 
+/**
+ *
+ * @param ws
+ * @param message
+ */
+const sendError = (ws: import('ws').WebSocket, message: string) => {
+  ws.send(
+    JSON.stringify({
+      t: '9',
+      d: {
+        message
+      }
+    })
+  )
+}
+
+/**
+ *
+ * @param ws
+ * @param request
+ * @param server
+ */
 export function SOCKET(
   ws: import('ws').WebSocket,
   request: import('http').IncomingMessage,
@@ -32,42 +56,26 @@ export function SOCKET(
     try {
       //
       const data = JSON.parse(message.toString()) as {
-        t: '0' | '1' | '2' | '9' | '12'
+        t: Typing
         d: any
       }
-      // //
+      //
       if (WSEvent[data.t] && typeof WSEvent[data.t] == 'function') {
         WSEvent[data.t](ws, data.d)
       } else {
-        ws.send(
-          JSON.stringify({
-            t: '9',
-            d: {
-              message: '错误传输'
-            }
-          })
-        )
+        sendError(ws, '客户端约定格式错误')
       }
     } catch (err) {
       console.error(err)
-      ws.send(
-        JSON.stringify({
-          t: '9',
-          d: {
-            message: '错误传输'
-          }
-        })
-      )
+      sendError(ws, '服务器数据解析错误')
     }
   })
-
-  ws.on('close', err => {
-    console.log('websoket 关闭')
-  })
-
-  ws.on('error', err => {
-    console.error('出错啦', err)
-  })
-
   //
+  ws.on('close', err => {
+    console.log('服务器连接关闭')
+  })
+  //
+  ws.on('error', err => {
+    console.error('服务器连接错误', err)
+  })
 }

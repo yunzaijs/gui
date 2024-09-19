@@ -3,7 +3,9 @@ import Form from '@/app/pages/home/From'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { isLogin } from '@/app/core/login'
+import { useDispatch } from 'react-redux'
 export default () => {
+  const dispatch = useDispatch()
   const router = useRouter()
 
   const [show, setShow] = useState(false)
@@ -17,6 +19,17 @@ export default () => {
 
   const onClick = () => {
     router.push('/admin')
+  }
+
+  const loginQQ = () => {
+    dispatch({
+      // aler
+      type: 'ALERT',
+      show: true,
+      typing: 'ok',
+      title: '系统消息',
+      message: '尚未支持QQ快捷登录'
+    })
   }
 
   return (
@@ -188,9 +201,6 @@ export default () => {
               <h2 className="text-3xl leading-tight font-bold md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-700 text-transparent">
                 Yunzai Admin
               </h2>
-              <p className="mt-2 lg:text-lg text-gray-800 dark:text-neutral-200">
-                欢迎使用Yunzai管理系统
-              </p>
             </div>
           </div>
 
@@ -206,7 +216,7 @@ export default () => {
               <div className="p-4 sm:p-7 h-full">
                 <div className="text-center">
                   <h1 className="block text-2xl font-bold text-gray-800 dark:text-white">
-                    欢迎使用Yunzai可视化界面
+                    欢迎使用可视化界面
                   </h1>
                   <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
                     忘记账号?{' '}
@@ -222,6 +232,7 @@ export default () => {
                 <div className="mt-5 flex flex-col justify-center h-full">
                   <button
                     type="button"
+                    onClick={loginQQ}
                     className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
                   >
                     使用QQ授权登录

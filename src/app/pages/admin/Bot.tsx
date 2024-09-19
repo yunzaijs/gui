@@ -114,8 +114,11 @@ export default () => {
   }, [])
 
   return (
-    <>
-      <div className="shadow-md w-full sm:w-1/2 p-6 rounded-md">
+    <section className="flex flex-col h-full gap-2 p-2">
+      {
+        //
+      }
+      <div className="shadow-centent flex gap-4 w-full p-4 rounded-md">
         <div className="my-1">
           {msg.name} - {msg.cwd}
         </div>
@@ -127,7 +130,7 @@ export default () => {
         <div className="my-1">地区: {msg.locale}</div>
         {msg.status == '未安装' && msg.lock == '0' && (
           <button
-            className="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+            className=" px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
             onClick={onClickInstallBot}
             type="button"
           >
@@ -135,11 +138,20 @@ export default () => {
           </button>
         )}
       </div>
+      {
+        //
+      }
       <div>
         {messages.map((msg, index) => (
           <li key={index}>{msg}</li>
         ))}
       </div>
-    </>
+      {
+        //
+      }
+      <div className="shadow-centent w-full h-full max-h-96 bg-black text-white p-4 rounded-md">
+        localhost:~$ XXX
+      </div>
+    </section>
   )
 }

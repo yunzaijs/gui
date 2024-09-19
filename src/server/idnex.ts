@@ -6,11 +6,10 @@ export const secret_key = 'yunzai:secret:key'
 export const UserName = 12345678
 export const PassWord = 12345678
 export const HTTPS_GIT_SHELL =
-  'git clone --depth=1 https://github.com/yunzai-org/yunzai-next.git'
-export const HTTPS_GIT_URL = 'https://github.com/yunzai-org/yunzai-next.git'
+  'git clone --depth=1 https://github.com/yunzai-org/yunzai-bot.git'
+export const HTTPS_GIT_URL = 'https://github.com/yunzai-org/yunzai-bot.git'
 export const CURL_SHELL =
-  'curl -L -o yunzai-next.zip https://github.com/yunzai-org/yunzai-next/archive/refs/heads/main.zip'
-
+  'curl -L -o yunzai-bot.zip https://github.com/yunzai-org/yunzai-bot/archive/refs/heads/main.zip'
 /**
  *
  * @returns

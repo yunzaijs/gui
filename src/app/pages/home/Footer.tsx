@@ -69,7 +69,7 @@ export default () => {
                 className="inline-flex gap-x-2 text-gray-600 hover:text-gray-800 focus:outline-none focus:text-gray-800 dark:text-neutral-400 dark:hover:text-neutral-200 dark:focus:text-neutral-200"
                 href="https://qm.qq.com/cgi-bin/qm/qr?authKey=4HjybQtc5O6cqPtpkFTNKe1KsV7MQ4ulUPq1IV9T6pPczSn3oTavY9TW3PVCW3Az&k=9xNiPc3vdKodzUtWeqaT_zOrOpzAlWEh&noverify=0"
               >
-                QQ-Group
+                Join-QQ-Group
               </a>
             </div>
           </div>
